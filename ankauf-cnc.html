@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>CNC Ankauf – TechRefurbNorth</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-light">
+
+  <div class="container py-5">
+
+    <h1 class="mb-4">CNC‑Maschinen Ankauf</h1>
+    <p class="lead">
+      Verkaufe deine Maker‑CNC oder Desktop‑CNC.  
+      Wir melden uns innerhalb von <strong>48 Stunden</strong> mit einem Angebot.
+    </p>
+
+    <hr class="border-secondary my-4">
+
+    <form action="mailto:DEINE_EMAIL@domain.de" method="post" enctype="multipart/form-data">
+
+      <!-- Marke -->
+      <div class="mb-3">
+        <label class="form-label">Marke auswählen</label>
+        <select class="form-select" name="Marke" required>
+          <option value="">Bitte wählen...</option>
+          <option value="TwoTrees">TwoTrees (TTC‑Serie)</option>
+          <option value="Genmitsu (SainSmart)">Genmitsu (SainSmart)</option>
+          <option value="Makera">Makera (Carvera)</option>
+          <option value="Stepcraft">Stepcraft (D‑Serie, Q‑Serie)</option>
+          <option value="Snapmaker">Snapmaker (CNC‑Modul)</option>
+          <option value="xTool">xTool (CNC/Laser Hybrid)</option>
+          <option value="Andere">Andere Marke</option>
+        </select>
+      </div>
+
+      <!-- Modell -->
+      <div class="mb-3">
+        <label class="form-label">Modellname</label>
+        <input type="text" class="form-control" name="Modell" placeholder="z. B. Genmitsu 3018 PRO, Makera Carvera, Stepcraft D420" required>
+      </div>
+
+      <!-- Zustand -->
+      <div class="mb-3">
+        <label class="form-label">Zustand</label>
+        <select class="form-select" name="Zustand" required>
+          <option value="">Bitte wählen...</option>
+          <option value="Läuft einwandfrei">Läuft einwandfrei</option>
+          <option value="Mechanische Probleme">Mechanische Probleme</option>
+          <option value="Elektronik defekt">Elektronik defekt</option>
+          <option value="Stepper/Spindel defekt">Stepper/Spindel defekt</option>
+          <option value="Unvollständig">Unvollständig</option>
+        </select>
+      </div>
+
+      <!-- Bilder -->
+      <div class="mb-3">
+        <label class="form-label">Bilder hochladen (mind. 5 Stück)</label>
+        <input type="file" class="form-control" name="Bilder" accept="image/*" multiple required>
+        <small class="text-secondary">Bitte lade mindestens 5 Bilder hoch (Gesamtansicht, Z‑Achse, Spindel, Elektronik, Zubehör).</small>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Deine E‑Mail‑Adresse</label>
+        <input type="email" class="form-control" name="Email" placeholder="kunde@example.com" required>
+      </div>
+
+      <!-- Nachricht -->
+      <div class="mb-3">
+        <label class="form-label">Zusätzliche Informationen (optional)</label>
+        <textarea class="form-control" name="Beschreibung" rows="4" placeholder="Fehlerbeschreibung, Umbauten, fehlende Teile usw."></textarea>
+      </div>
+
+      <!-- Button -->
+      <button type="submit" class="btn btn-primary btn-lg w-100">
+        Gerätedaten senden
+      </button>
+
+    </form>
+
+    <hr class="border-secondary my-4">
+
+    <p class="text-secondary">
+      Wir prüfen dein Gerät und melden uns innerhalb von <strong>48 Stunden</strong> mit einem Angebot.
+    </p>
+
+  </div>
+
+</body>
+</html>
