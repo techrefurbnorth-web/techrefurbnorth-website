@@ -56,8 +56,8 @@
           <option value="cnc">CNC‑Fräse</option>
         </select>
 
-        <label>Bild‑URL</label>
-        <input class="form-control" id="image" placeholder="bilder/ender3v2.jpg" required>
+        <label>Bild auswählen</label>
+        <input class="form-control" id="imageFile" type="file" accept="image/*" required>
 
         <label>Kurzbeschreibung</label>
         <textarea class="form-control" id="description" required></textarea>
@@ -113,6 +113,7 @@
 
         card.innerHTML = `
           <div class="card p-3">
+            <img src="${device.image}" class="img-fluid mb-3" style="border-radius:10px;">
             <h4>${device.name}</h4>
             <p><strong>${device.price} €</strong></p>
             <p>${device.description}</p>
@@ -125,7 +126,7 @@
     }
 
     /* ============================
-       GERÄTE SPEICHERN
+       JSON SPEICHERN
     ============================ */
 
     async function saveDevices(devices) {
@@ -152,18 +153,27 @@
       const res = await fetch("devices.json");
       const devices = await res.json();
 
-      const newDevice = {
-        id: document.getElementById("name").value.toLowerCase().replace(/ /g, "-"),
-        name: document.getElementById("name").value,
-        price: parseFloat(document.getElementById("price").value),
-        category: document.getElementById("category").value,
-        image: document.getElementById("image").value,
-        description: document.getElementById("description").value,
-        specs: JSON.parse(document.getElementById("specs").value)
+      const file = document.getElementById("imageFile").files[0];
+      const reader = new FileReader();
+
+      reader.onload = async function() {
+        const base64Image = reader.result;
+
+        const newDevice = {
+          id: document.getElementById("name").value.toLowerCase().replace(/ /g, "-"),
+          name: document.getElementById("name").value,
+          price: parseFloat(document.getElementById("price").value),
+          category: document.getElementById("category").value,
+          image: base64Image,
+          description: document.getElementById("description").value,
+          specs: JSON.parse(document.getElementById("specs").value)
+        };
+
+        devices.push(newDevice);
+        saveDevices(devices);
       };
 
-      devices.push(newDevice);
-      saveDevices(devices);
+      reader.readAsDataURL(file);
     });
 
     /* ============================
