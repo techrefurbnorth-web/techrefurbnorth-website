@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>3D‑Drucker Ankauf – TechRefurbNorth</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-light">
+
+  <div class="container py-5">
+
+    <h1 class="mb-4">3D‑Drucker Ankauf</h1>
+    <p class="lead">
+      Verkaufe deinen gebrauchten oder defekten 3D‑Drucker.  
+      Wir melden uns innerhalb von <strong>48 Stunden</strong> mit einem Angebot.
+    </p>
+
+    <hr class="border-secondary my-4">
+
+    <form action="mailto:DEINE_EMAIL@domain.de" method="post" enctype="multipart/form-data">
+
+      <!-- Marke -->
+      <div class="mb-3">
+        <label class="form-label">Marke auswählen</label>
+        <select class="form-select" name="Marke" required>
+          <option value="">Bitte wählen...</option>
+          <option value="Creality">Creality (Ender, CR‑Serie)</option>
+          <option value="Anycubic">Anycubic (Kobra, Mega, Photon)</option>
+          <option value="Prusa">Prusa (MK3S, Mini, XL)</option>
+          <option value="Artillery">Artillery (Sidewinder, Genius)</option>
+          <option value="Elegoo">Elegoo (Neptune, Mars)</option>
+          <option value="Flashforge">Flashforge</option>
+          <option value="Sonstige">Andere Marke</option>
+        </select>
+      </div>
+
+      <!-- Modell -->
+      <div class="mb-3">
+        <label class="form-label">Modellname</label>
+        <input type="text" class="form-control" name="Modell" placeholder="z. B. Ender 3 V2, Prusa MK3S+" required>
+      </div>
+
+      <!-- Zustand -->
+      <div class="mb-3">
+        <label class="form-label">Zustand</label>
+        <select class="form-select" name="Zustand" required>
+          <option value="">Bitte wählen...</option>
+          <option value="Läuft einwandfrei">Läuft einwandfrei</option>
+          <option value="Läuft, aber Probleme">Läuft, aber Probleme</option>
+          <option value="Mechanisch defekt">Mechanisch defekt</option>
+          <option value="Elektronik defekt">Elektronik defekt</option>
+          <option value="Unvollständig">Unvollständig</option>
+        </select>
+      </div>
+
+      <!-- Bilder -->
+      <div class="mb-3">
+        <label class="form-label">Bilder hochladen (mind. 5 Stück)</label>
+        <input type="file" class="form-control" name="Bilder" accept="image/*" multiple required>
+        <small class="text-secondary">Bitte lade mindestens 5 Bilder hoch (Gesamtansicht, Hotend, Bett, Elektronik, Zubehör).</small>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Deine E‑Mail‑Adresse</label>
+        <input type="email" class="form-control" name="Email" placeholder="kunde@example.com" required>
+      </div>
+
+      <!-- Nachricht -->
+      <div class="mb-3">
+        <label class="form-label">Zusätzliche Informationen (optional)</label>
+        <textarea class="form-control" name="Beschreibung" rows="4" placeholder="Fehlerbeschreibung, Umbauten, fehlende Teile usw."></textarea>
+      </div>
+
+      <!-- Button -->
+      <button type="submit" class="btn btn-primary btn-lg w-100">
+        Gerätedaten senden
+      </button>
+
+    </form>
+
+    <hr class="border-secondary my-4">
+
+    <p class="text-secondary">
+      Wir prüfen dein Gerät und melden uns innerhalb von <strong>48 Stunden</strong> mit einem Angebot.
+    </p>
+
+  </div>
+
+</body>
+</html>
