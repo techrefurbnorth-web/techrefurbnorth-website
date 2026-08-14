@@ -2,46 +2,111 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>TechRefurbNorth – Präzision. Reparatur. Zukunft.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
+  <title>TechRefurbNorth – Refurbished 3D‑Drucker & CNC‑Fräsen</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      padding: 120px 0;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.85;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .card {
+      border-radius: 12px;
+    }
+    .footer {
+      background: #111;
+      padding: 40px 0;
+      color: #aaa;
+      text-align: center;
+      margin-top: 60px;
+    }
+  </style>
 </head>
-<body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="index.html">TechRefurbNorth</a>
+<body class="bg-dark text-light">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Startseite</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="ankauf.html">Ankauf</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="refurbished.html">Refurbished Geräte</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">Über uns</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="kontakt.html">Kontakt</a>
-        </li>
-
-      </ul>
-    </div>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>TechRefurbNorth</h1>
+    <p>Refurbished 3D‑Drucker & CNC‑Fräsen – geprüft, repariert, getestet.</p>
+    <a href="refurbished.html" class="btn btn-primary btn-lg mt-4">Refurbished Geräte ansehen</a>
   </div>
-</nav>
+
+  <div class="container py-5">
+
+    <!-- WARUM WIR -->
+    <div class="mb-5">
+      <h2 class="section-title">Warum TechRefurbNorth?</h2>
+      <p class="text-secondary">
+        Wir kaufen defekte oder gebrauchte Geräte an, reparieren sie professionell und bieten sie als geprüfte Refurbished‑Modelle an.
+        Jedes Gerät wird gereinigt, kalibriert, getestet und kommt mit Funktionsgarantie.
+      </p>
+    </div>
+
+    <!-- 3 KARTEN -->
+    <div class="row">
+
+      <!-- Ankauf -->
+      <div class="col-md-4 mb-4">
+        <div class="card bg-secondary text-light p-3">
+          <h3>Ankauf</h3>
+          <p>Verkaufe deinen 3D‑Drucker oder deine CNC‑Fräse. Wir melden uns innerhalb von 48 Stunden.</p>
+          <a href="ankauf.html" class="btn btn-light">Zum Ankauf</a>
+        </div>
+      </div>
+
+      <!-- Refurbished -->
+      <div class="col-md-4 mb-4">
+        <div class="card bg-secondary text-light p-3">
+          <h3>Refurbished Geräte</h3>
+          <p>Professionell überholte Geräte – gereinigt, repariert, getestet.</p>
+          <a href="refurbished.html" class="btn btn-light">Geräte ansehen</a>
+        </div>
+      </div>
+
+      <!-- Reparatur -->
+      <div class="col-md-4 mb-4">
+        <div class="card bg-secondary text-light p-3">
+          <h3>Reparatur</h3>
+          <p>Wir reparieren 3D‑Drucker & CNC‑Fräsen schnell und zuverlässig.</p>
+          <a href="kontakt.html" class="btn btn-light">Kontakt aufnehmen</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ÜBER UNS -->
+    <div class="mt-5">
+      <h2 class="section-title">Über uns</h2>
+      <p class="text-secondary">
+        TechRefurbNorth ist ein junges Technik‑Unternehmen aus Norddeutschland, spezialisiert auf die Reparatur und
+        Wiederaufbereitung von 3D‑Druckern und CNC‑Fräsen.  
+        Unser Ziel: hochwertige Technik bezahlbar machen – nachhaltig und professionell.
+      </p>
+      <a href="about.html" class="btn btn-outline-light mt-3">Mehr erfahren</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 TechRefurbNorth – Refurbished 3D‑Drucker & CNC‑Fräsen
+  </div>
+
+</body>
+</html>
