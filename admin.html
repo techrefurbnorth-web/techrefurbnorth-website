@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – Geräteverwaltung</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { background: #111; color: #eee; }
+    .card { background: #222; border-radius: 10px; }
+    label { margin-top: 10px; }
+    #loginBox { max-width: 400px; }
+  </style>
+</head>
+
+<body class="bg-dark text-light">
+
+  <!-- LOGIN -->
+  <div id="loginBox" class="container py-5">
+    <h2 class="mb-4">Admin Login</h2>
+
+    <label>Passwort eingeben</label>
+    <input type="password" id="adminPassword" class="form-control mb-3">
+
+    <button class="btn btn-primary w-100" onclick="checkLogin()">Login</button>
+
+    <p id="loginError" class="text-danger mt-3" style="display:none;">
+      Falsches Passwort.
+    </p>
+  </div>
+
+  <!-- ADMIN CONTENT -->
+  <div id="adminContent" style="display:none;">
+
+    <div class="container py-5">
+
+      <h1 class="mb-4">Admin – Geräteverwaltung</h1>
+      <p class="text-secondary">Hier kannst du Geräte hinzufügen, bearbeiten oder löschen.</p>
+
+      <hr class="border-secondary my-4">
+
+      <!-- FORMULAR: GERÄT HINZUFÜGEN -->
+      <h2>Neues Gerät hinzufügen</h2>
+
+      <form id="addDeviceForm" class="mb-5">
+
+        <label>Gerätename</label>
+        <input class="form-control" id="name" required>
+
+        <label>Preis (€)</label>
+        <input class="form-control" id="price" type="number" required>
+
+        <label>Kategorie</label>
+        <select class="form-select" id="category" required>
+          <option value="3d">3D‑Drucker</option>
+          <option value="cnc">CNC‑Fräse</option>
+        </select>
+
+        <label>Bild‑URL</label>
+        <input class="form-control" id="image" placeholder="bilder/ender3v2.jpg" required>
+
+        <label>Kurzbeschreibung</label>
+        <textarea class="form-control" id="description" required></textarea>
+
+        <label>Technische Daten (JSON Format)</label>
+        <textarea class="form-control" id="specs" placeholder='{"Bauraum":"220x220x250"}' required></textarea>
+
+        <button class="btn btn-primary mt-3">Gerät speichern</button>
+      </form>
+
+      <hr class="border-secondary my-4">
+
+      <!-- GERÄTE LISTE -->
+      <h2>Bestehende Geräte</h2>
+      <div id="deviceList" class="row"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+    /* ============================
+       PASSWORT LOGIN
+    ============================ */
+
+    const PASSWORD = "TechRefurb2026"; // <<< ÄNDERE DEIN PASSWORT HIER
+
+    function checkLogin() {
+      const input = document.getElementById("adminPassword").value;
+
+      if (input === PASSWORD) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("adminContent").style.display = "block";
+      } else {
+        document.getElementById("loginError").style.display = "block";
+      }
+    }
+
+    /* ============================
+       GERÄTE LADEN
+    ============================ */
+
+    async function loadDevices() {
+      const res = await fetch("devices.json");
+      const devices = await res.json();
+
+      const list = document.getElementById("deviceList");
+      list.innerHTML = "";
+
+      devices.forEach(device => {
+        const card = document.createElement("div");
+        card.className = "col-md-4 mb-4";
+
+        card.innerHTML = `
+          <div class="card p-3">
+            <h4>${device.name}</h4>
+            <p><strong>${device.price} €</strong></p>
+            <p>${device.description}</p>
+            <button class="btn btn-danger" onclick="deleteDevice('${device.id}')">Löschen</button>
+          </div>
+        `;
+
+        list.appendChild(card);
+      });
+    }
+
+    /* ============================
+       GERÄTE SPEICHERN
+    ============================ */
+
+    async function saveDevices(devices) {
+      const blob = new Blob([JSON.stringify(devices, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "devices.json";
+      a.click();
+
+      URL.revokeObjectURL(url);
+
+      alert("Neue devices.json wurde heruntergeladen. Bitte in GitHub hochladen.");
+    }
+
+    /* ============================
+       GERÄT HINZUFÜGEN
+    ============================ */
+
+    document.getElementById("addDeviceForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const res = await fetch("devices.json");
+      const devices = await res.json();
+
+      const newDevice = {
+        id: document.getElementById("name").value.toLowerCase().replace(/ /g, "-"),
+        name: document.getElementById("name").value,
+        price: parseFloat(document.getElementById("price").value),
+        category: document.getElementById("category").value,
+        image: document.getElementById("image").value,
+        description: document.getElementById("description").value,
+        specs: JSON.parse(document.getElementById("specs").value)
+      };
+
+      devices.push(newDevice);
+      saveDevices(devices);
+    });
+
+    /* ============================
+       GERÄT LÖSCHEN
+    ============================ */
+
+    async function deleteDevice(id) {
+      const res = await fetch("devices.json");
+      let devices = await res.json();
+
+      devices = devices.filter(d => d.id !== id);
+
+      saveDevices(devices);
+    }
+
+    loadDevices();
+  </script>
+
+</body>
+</html>
